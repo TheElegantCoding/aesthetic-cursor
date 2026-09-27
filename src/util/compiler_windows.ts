@@ -6,7 +6,7 @@ import util from 'node:util';
 
 const execPromise = util.promisify(exec);
 
-export const compileWindowsCursor = async (
+const compileWindowsCursor = async (
   cursorName: string,
   cursorFolderPath: string,
   pngFiles: string[],
@@ -24,7 +24,7 @@ export const compileWindowsCursor = async (
   return windowsCurrentName;
 };
 
-export const generateWindowsInf = async (outputDirectory: string, windowsCursors: string[]) => {
+const generateWindowsInf = async (outputDirectory: string, windowsCursors: string[]) => {
   let infContent = '[Version]\nsignature="$CHICAGO$"\n\n';
   infContent += '[DefaultInstall]\nCopyFiles = Cursor.Files.Install\nAddReg = Cursor.Reg\n\n';
   infContent += '[DestinationDirs]\nCursor.Files.Install = 10, CURSORS\n\n';
@@ -39,4 +39,9 @@ export const generateWindowsInf = async (outputDirectory: string, windowsCursors
   infContent += 'HKCU,"Control Panel\\Cursors","Arrow",0x00020000,"%%10%%\\CURSORS\\pointer.cur"\n';
 
   await fs.writeFile(path.join(path.dirname(outputDirectory), 'install.inf'), infContent, 'utf-8');
+};
+
+export {
+  generateWindowsInf,
+  compileWindowsCursor
 };

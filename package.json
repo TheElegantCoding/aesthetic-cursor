@@ -13,7 +13,7 @@
     "postinstall": "gitlys init",
     "preinstall": "npx only-allow bun",
     "build": "bun ./src/index.ts",
-    "install": "bun ./src/index.ts",
+    "install": "bun ./src/install.ts",
     "lint": "bun lint:eslint",
     "lint:eslint": "eslint . --fix",
     "release": "bun run build && bunx gitlys release"

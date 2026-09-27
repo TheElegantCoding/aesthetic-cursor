@@ -64,7 +64,7 @@ const compileCursors = async () => {
       const outputBinaryPath = path.join(THEME_OUTPUT_DIR, cursorName);
 
       try {
-        await execPromise(`xcursorgen "${inFilePath}" "${outputBinaryPath}"`);
+        await execPromise(`cd "${cursorFolderPath}" && xcursorgen "${cursorName}.in" "${outputBinaryPath}"`);
       } catch (execError) {
         logger.error(`Error at ${cursorName} with xcursorgen: ${execError}`);
       }

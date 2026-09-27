@@ -7,6 +7,10 @@ const config = eslintConfig({
   yml: true,
   perfectionist: true,
   typescript: true
+}, {
+  rules: {
+    'max-statements': 'off'
+  }
 });
 
 export default config;

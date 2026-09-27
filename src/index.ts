@@ -1,80 +1,63 @@
+import {
+  PNG_DIR,
+  LINUX_OUTPUT_DIR,
+  WINDOWS_OUTPUT_DIR
+} from '@src/constant/constant.js';
+import { compileLinuxCursor } from '@src/util/compiler_linux.js';
+import { generateWindowsInf, compileWindowsCursor } from '@src/util/compiler_windows.js';
+import { logger, loggerLoader } from '@src/util/logger.js';
+import { themeConfig } from '@src/util/theme_config.js';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { exec } from 'node:child_process';
-import util from 'node:util';
-import { logger, loggerLoader } from '@src/util/logger.js';
 
-const execPromise = util.promisify(exec);
-const PNG_DIR = path.join(process.cwd(), 'src/asset/png');
-const THEME_OUTPUT_DIR = path.join(process.cwd(), 'dist/cursors');
-
-const SIZES = [24, 48];
-
-const getHotspot = (name: string): [number, number] => {
-  if (name.includes('pointer') || name.includes('hand') || name.includes('link')) return [6, 2];
-  if (name.includes('cross') || name.includes('precision')) return [12, 12];
-  if (name.includes('ibeam') || name.includes('xterm')) return [12, 12];
-  return [0, 0];
-};
-
-const compileCursors = async () => {
+const createCursor = async () => {
   try {
-    await fs.mkdir(THEME_OUTPUT_DIR, { recursive: true });
+    await fs.mkdir(LINUX_OUTPUT_DIR, { recursive: true });
+    await fs.mkdir(WINDOWS_OUTPUT_DIR, { recursive: true });
     const entries = await fs.readdir(PNG_DIR, { withFileTypes: true });
-
-    if (entries.length === 0) {
-      logger.warning(`There is no folder in: ${PNG_DIR}`);
-      return;
-    }
-
-    const loader = loggerLoader(`Generating .in files and compiling with xcursorgen`);
+    const loader = loggerLoader('Creating cursors for linux and windows');
     loader.start();
 
-    for (const entry of entries) {
-      if (!entry.isDirectory()) continue;
+    const windowsMappedCursors: string[] = [];
 
+    for (const entry of entries) {
       const cursorName = entry.name;
       const cursorFolderPath = path.join(PNG_DIR, cursorName);
       const filesInFolder = await fs.readdir(cursorFolderPath);
-
-      let inConfigContent = '';
-      const [hx, hy] = getHotspot(cursorName);
-
-      const pngFiles = filesInFolder.filter(f => path.extname(f).toLowerCase() === '.png');
-
-      for (const size of SIZES) {
-        const staticFile = pngFiles.find(f => f === `${cursorName}_${size}.png`);
-        if (staticFile) {
-          inConfigContent += `${size}\t${hx}\t${hy}\t${staticFile}\n`;
-        }
-
-        const animFrames = pngFiles.filter(f => f.includes(`_${size}`) && f !== `${cursorName}_${size}.png`).sort();
-        if (animFrames.length > 0) {
-          for (const frame of animFrames) {
-            inConfigContent += `${size}\t${hx}\t${hy}\t${frame}\t80\n`;
-          }
-        }
-      }
-
-      if (!inConfigContent.trim()) continue;
-
-      const inFilePath = path.join(cursorFolderPath, `${cursorName}.in`);
-      await fs.writeFile(inFilePath, inConfigContent, 'utf-8');
-
-      const outputBinaryPath = path.join(THEME_OUTPUT_DIR, cursorName);
+      const pngFiles = filesInFolder.filter((file) => { return path.extname(file).toLowerCase() === '.png'; });
 
       try {
-        await execPromise(`cd "${cursorFolderPath}" && xcursorgen "${cursorName}.in" "${outputBinaryPath}"`);
-      } catch (execError) {
-        logger.error(`Error at ${cursorName} with xcursorgen: ${execError}`);
+        await compileLinuxCursor(
+          cursorName,
+          cursorFolderPath,
+          pngFiles,
+          LINUX_OUTPUT_DIR
+        );
+      } catch (error) {
+        logger.error(`Error Linux (${cursorName}): ${error as string}`);
+      }
+
+      try {
+        const currentFile = await compileWindowsCursor(
+          cursorName,
+          cursorFolderPath,
+          pngFiles,
+          WINDOWS_OUTPUT_DIR
+        );
+        if (currentFile) { windowsMappedCursors.push(currentFile); }
+      } catch (error) {
+        logger.error(`Error Windows (${cursorName}): ${error as string}`);
       }
     }
 
+    await themeConfig();
+    await generateWindowsInf(WINDOWS_OUTPUT_DIR, windowsMappedCursors);
+
     loader.stop();
-    logger.info(`Cursor theme successfully compiled.`);
-  } catch (error) {
-    logger.error(`Error at compilation: ${error}`);
+    logger.info('Process completed');
+  } catch (error: unknown) {
+    logger.error(`Error crítico en la ejecución: ${error as string}`);
   }
 };
 
-await compileCursors();
+await createCursor();

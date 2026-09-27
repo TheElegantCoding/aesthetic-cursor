@@ -4,7 +4,6 @@ import {
   WINDOWS_OUTPUT_DIR
 } from '@src/constant/constant.js';
 import { compileLinuxCursor } from '@src/util/compiler_linux.js';
-import { generateWindowsInf, compileWindowsCursor } from '@src/util/compiler_windows.js';
 import { logger, loggerLoader } from '@src/util/logger.js';
 import { themeConfig } from '@src/util/theme_config.js';
 import fs from 'node:fs/promises';
@@ -17,8 +16,6 @@ const createCursor = async () => {
     const entries = await fs.readdir(PNG_DIR, { withFileTypes: true });
     const loader = loggerLoader('Creating cursors for linux and windows');
     loader.start();
-
-    const windowsMappedCursors: string[] = [];
 
     for (const entry of entries) {
       const cursorName = entry.name;
@@ -36,22 +33,9 @@ const createCursor = async () => {
       } catch (error) {
         logger.error(`Error Linux (${cursorName}): ${error as string}`);
       }
-
-      try {
-        const currentFile = await compileWindowsCursor(
-          cursorName,
-          cursorFolderPath,
-          pngFiles,
-          WINDOWS_OUTPUT_DIR
-        );
-        if (currentFile) { windowsMappedCursors.push(currentFile); }
-      } catch (error) {
-        logger.error(`Error Windows (${cursorName}): ${error as string}`);
-      }
     }
 
     await themeConfig();
-    await generateWindowsInf(WINDOWS_OUTPUT_DIR, windowsMappedCursors);
 
     loader.stop();
     logger.info('Process completed');

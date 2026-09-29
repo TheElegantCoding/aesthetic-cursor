@@ -4,9 +4,12 @@ import util from 'node:util';
 const execPromise = util.promisify(exec);
 
 const install = async () => {
-  await execPromise('mkdir -p ~/.local/share/icons/aesthetic-cursor/cursors');
-  await execPromise('cp -r dist/cursors/* ~/.local/share/icons/aesthetic-cursor/cursors');
-  await execPromise('mv index.theme ~/.local/share/icons/aesthetic-cursor/');
+  const theme = '~/.local/share/icons/aesthetic-cursor';
+
+  await execPromise(`rm -rf ${theme}/cursors`);
+  await execPromise(`mkdir -p ${theme}/cursors`);
+  await execPromise(`cp -r dist/cursors/* ${theme}/cursors/`);
+  await execPromise(`cp -r dist/index.theme ${theme}/`);
 };
 
 await install();

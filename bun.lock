@@ -9,7 +9,7 @@
         "eslint-config-universal-code": "1.1.2",
         "gitlys": "2.2.1",
         "logginlys": "4.0.2",
-        "sharp": "^0.35.5",
+        "sharp": "0.35.5",
         "tsup": "^8.5.1",
         "typescript": "5.9.3",
       },

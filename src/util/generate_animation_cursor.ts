@@ -71,6 +71,8 @@ const generateAnimationCursor = async () => {
         return sizeEntry.frames.map((frame) => { return { ...frame, hotSpot: sizeEntry.hotSpot }; });
       })
     });
+
+    // exec(`cd ${PNG_DIR}/${cursor.name} && xcursorgen ${cursor.name}.cursor ${OUTPUT_DIR}/cursors/${cursor.name}`);
   }
 };
 

@@ -15,7 +15,7 @@ const createCursor = async () => {
 
   await generateStaticCursor();
   await generateAnimationCursor();
-  // await themeConfig();
+  await themeConfig();
 
   loader.stop();
 };

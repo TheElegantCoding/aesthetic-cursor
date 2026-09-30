@@ -2,9 +2,11 @@ import { cursorConfig } from '@src/config/cursor_config.js';
 import {
   SIZES,
   SVG_DIR,
-  PNG_DIR
+  PNG_DIR,
+  OUTPUT_DIR
 } from '@src/constant/constant.js';
 import { generateCursorFile } from '@src/util/generate_cursor_file.js';
+import { exec } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -30,11 +32,11 @@ const generateStaticCursor = async () => {
         .resize(size, size)
         .toFile(outputFile);
 
-      await generateCursorFile({
+      generateCursorFile({
         cursorName: cursor.name,
         hotSpot: cursor.hotSpot
       });
-      // exec(`cd ${PNG_DIR}/${cursor.name} && xcursorgen ${cursor.name}.cursor ${OUTPUT_DIR}/cursors/${cursor.name}`);
+      exec(`cd ${PNG_DIR}/${cursor.name} && xcursorgen ${cursor.name}.cursor ${OUTPUT_DIR}/cursors/${cursor.name}`);
     }
   }
 };

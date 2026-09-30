@@ -454,6 +454,7 @@ const cursorConfig = [
   {
     name: 'wait',
     png: 'wait.png',
+    animation: true,
     hotSpot: {
       x: 16,
       y: 16
@@ -463,6 +464,7 @@ const cursorConfig = [
   {
     name: 'progress',
     png: 'progress.png',
+    animation: true,
     hotSpot: {
       x: 5,
       y: 9

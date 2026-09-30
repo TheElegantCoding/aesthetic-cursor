@@ -39,12 +39,7 @@ const generateAnimationCursor = async () => {
         const outputPngPath = path.join(cursorOutputDirectory, outputPngName);
 
         await sharp(inputSvgPath, { density: 300 })
-          .resize(size, size, { fit: 'contain', background: {
-            r: 0,
-            g: 0,
-            b: 0,
-            alpha: 0
-          } })
+          .resize(size, size)
           .png({
             quality: 100,
             compressionLevel: 9,

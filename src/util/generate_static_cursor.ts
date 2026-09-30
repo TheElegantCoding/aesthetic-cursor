@@ -1,29 +1,25 @@
-import type { Dirent } from 'node:fs';
-
+import { cursorConfig } from '@src/config/cursor_config.js';
 import {
   SIZES,
   SVG_DIR,
-  PNG_DIR,
-  OUTPUT_DIR
+  PNG_DIR
 } from '@src/constant/constant.js';
-import { getHotspot } from '@src/constant/hotspot.js';
 import { generateCursorFile } from '@src/util/generate_cursor_file.js';
-import { exec } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 
-const generateStaticCursor = (entries: Dirent[]) => {
-  entries.forEach(async (entry) => {
-    const cursorName = entry.name.replaceAll('.svg', '');
-    const cursorFile = await fs.readFile(path.join(`${SVG_DIR}/static`, `${cursorName}.svg`));
-    const [hx, hy] = getHotspot(cursorName);
+const generateStaticCursor = async () => {
+  const staticCursor = cursorConfig.filter((cursor) => { return !cursor.animation; });
 
-    await fs.mkdir(path.join(PNG_DIR, cursorName), { recursive: true });
-    await fs.mkdir(path.join(OUTPUT_DIR), { recursive: true });
-    await fs.mkdir(path.join(OUTPUT_DIR, 'cursors'), { recursive: true });
+  for (const cursor of staticCursor) {
+    const cursorFile = path.join(SVG_DIR, 'static', `${cursor.name}.svg`);
 
-    SIZES.forEach(async (size) => {
+    await fs.mkdir(path.join(PNG_DIR, cursor.name), { recursive: true });
+
+    for (const size of SIZES) {
+      const outputFile = path.join(PNG_DIR, cursor.name, `${cursor.name}-${size}.png`);
+
       await sharp(cursorFile, { density: 300 })
         .png({
           quality: 100,
@@ -32,18 +28,15 @@ const generateStaticCursor = (entries: Dirent[]) => {
           force: true
         })
         .resize(size, size)
-        .toFile(path.join(`${PNG_DIR}/${cursorName}`, `${cursorName}_${size}.png`));
+        .toFile(outputFile);
 
-      const cursorFileContent = generateCursorFile(
-        cursorName,
-        hx,
-        hy,
-        SIZES
-      );
-      await fs.writeFile(path.join(`${PNG_DIR}/${cursorName}`, `${cursorName}.cursor`), cursorFileContent);
-      exec(`cd ${PNG_DIR}/${cursorName} && xcursorgen ${cursorName}.cursor ${OUTPUT_DIR}/cursors/${cursorName}`);
-    });
-  });
+      await generateCursorFile({
+        cursorName: cursor.name,
+        hotSpot: cursor.hotSpot
+      });
+      // exec(`cd ${PNG_DIR}/${cursor.name} && xcursorgen ${cursor.name}.cursor ${OUTPUT_DIR}/cursors/${cursor.name}`);
+    }
+  }
 };
 
 export { generateStaticCursor };

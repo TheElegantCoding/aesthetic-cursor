@@ -9,7 +9,8 @@ const config = eslintConfig({
   typescript: true
 }, {
   rules: {
-    'max-statements': 'off'
+    'max-statements': 'off',
+    'id-length': 'off'
   }
 });
 

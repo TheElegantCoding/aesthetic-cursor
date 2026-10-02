@@ -32,7 +32,7 @@ const generateStaticCursor = async () => {
         .resize(size, size)
         .toFile(outputFile);
 
-      generateCursorFile({
+      await generateCursorFile({
         cursorName: cursor.name,
         hotSpot: cursor.hotSpot
       });

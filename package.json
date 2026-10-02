@@ -12,16 +12,16 @@
   "scripts": {
     "postinstall": "gitlys init",
     "preinstall": "npx only-allow bun",
-    "build": "bun ./src/index.ts",
+    "build": "bun run lint && bun run type-check && bun ./src/index.ts",
     "install": "bun ./src/install.ts",
-    "lint": "bun lint:eslint",
-    "lint:eslint": "eslint . --fix",
+    "lint": "eslint . --fix --cache",
+    "type-check": "tsc --noEmit",
     "release": "bun run build && bunx gitlys release"
   },
   "devDependencies": {
-    "@types/node": "26.6.3",
-    "eslint-config-universal-code": "1.1.2",
-    "gitlys": "2.2.1",
+    "@types/node": "26.6.4",
+    "eslint-config-universal-code": "1.1.4",
+    "gitlys": "2.2.3",
     "logginlys": "4.0.2",
     "sharp": "0.35.5",
     "tsup": "^8.5.1",

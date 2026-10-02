@@ -24,9 +24,9 @@ const generateAnimationCursor = async () => {
     const files = await fs.readdir(cursorSvgDirectory);
     const pngFiles = files
       .filter((file) => { return file.endsWith('.png'); })
-      .toSorted((a, b) => {
-        const numberA = parseInt(a.replaceAll(/[^0-9]/g, ''), 10) || 0;
-        const numberB = parseInt(b.replaceAll(/[^0-9]/g, ''), 10) || 0;
+      .toSorted((first, second) => {
+        const numberA = parseInt(first.replaceAll(/[^0-9]/g, ''), 10) || 0;
+        const numberB = parseInt(second.replaceAll(/[^0-9]/g, ''), 10) || 0;
         return numberA - numberB;
       });
 

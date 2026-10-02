@@ -64,7 +64,7 @@ const generateAnimationCursor = async () => {
       });
     }
 
-    generateCursorFile({
+    await generateCursorFile({
       cursorName: cursor.name,
       hotSpot: cursor.hotSpot,
       isAnimated: true,

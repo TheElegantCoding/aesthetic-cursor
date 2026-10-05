@@ -3,7 +3,8 @@
     "*.{ts,js,jsx,tsx,json,html,yml,yaml}": "bunx eslint --fix"
   },
   "release": {
-    "releaseToGithub": true
+    "releaseToGithub": true,
+    "files": ["PKGBUILD"]
   },
   "changelog": {
     "changelogPath": "CHANGELOG.md",

@@ -1,6 +1,6 @@
 {
   "name": "aesthetic-cursor",
-  "description": "📦️ Aesthetic cursor theme",
+  "description": "📦️ A minimal, clean, and modern cursor theme designed to bring a touch of elegance and style to your Linux desktop",
   "author": "Luis Monsalve",
   "version": "0.0.0",
   "private": true,
@@ -16,7 +16,8 @@
     "install": "bun ./src/install.ts",
     "lint": "eslint . --fix --cache",
     "type-check": "tsc --noEmit",
-    "release": "bun run build && bunx gitlys release"
+    "release": "bun run build && bunx gitlys release",
+    "bundle:aur": "tar -czf aesthetic-cursor.tar.gz -C dist ."
   },
   "devDependencies": {
     "@types/node": "26.6.4",

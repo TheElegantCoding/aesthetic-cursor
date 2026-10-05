@@ -1,12 +1,11 @@
 /* eslint-disable max-lines */
-
 const cursorConfig = [
   {
     name: 'left-ptr',
     png: 'left-ptr.png',
     hotSpot: {
-      x: 10,
-      y: 6
+      x: 9,
+      y: 5
     },
     symlink: [
       'arrow',
@@ -19,8 +18,8 @@ const cursorConfig = [
     name: 'link',
     png: 'link.png',
     hotSpot: {
-      x: 10,
-      y: 6
+      x: 9,
+      y: 5
     },
     symlink: ['alias']
   },
@@ -28,16 +27,16 @@ const cursorConfig = [
     name: 'copy',
     png: 'copy.png',
     hotSpot: {
-      x: 10,
-      y: 6
+      x: 9,
+      y: 5
     }
   },
   {
     name: 'circle',
     png: 'circle.png',
     hotSpot: {
-      x: 10,
-      y: 6
+      x: 9,
+      y: 5
     },
     symlink: ['forbidden']
   },
@@ -45,16 +44,16 @@ const cursorConfig = [
     name: 'context-menu',
     png: 'context-menu.png',
     hotSpot: {
-      x: 10,
-      y: 6
+      x: 9,
+      y: 5
     }
   },
   {
     name: 'pointer-move',
     png: 'pointer-move.png',
     hotSpot: {
-      x: 10,
-      y: 6
+      x: 9,
+      y: 5
     }
   },
   {
@@ -62,7 +61,7 @@ const cursorConfig = [
     png: 'center-ptr.png',
     hotSpot: {
       x: 14,
-      y: 4
+      y: 3
     },
     symlink: ['center_ptr']
   },
@@ -71,7 +70,7 @@ const cursorConfig = [
     png: 'right-ptr.png',
     hotSpot: {
       x: 23,
-      y: 6
+      y: 5
     },
     symlink: ['right_ptr']
   },
@@ -466,8 +465,8 @@ const cursorConfig = [
     png: 'progress.png',
     animation: true,
     hotSpot: {
-      x: 5,
-      y: 9
+      x: 4,
+      y: 8
     }
   }
 ];

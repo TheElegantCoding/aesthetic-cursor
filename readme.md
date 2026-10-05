@@ -1,8 +1,8 @@
 <img src="./.github/asset/illustration/wave_header.svg" width="100%" />
 
 <h1 id="top" align="center">
-  <img src="./.github/asset/icon/typescript.svg" width="28px" align="center" />
-  Typescript Starter Template
+  <img src="./.github/asset/icon/cursor.svg" width="28px" align="center" />
+  Aesthetic cursor
 </h1>
 
 <br />
@@ -10,12 +10,12 @@
 <img src="./.github/asset/illustration/divider.svg" alt="divider" width="100%" />
 
 <pre align="center">
-  <a href="#installation">📦 SETUP</a> • <a href="#configuration">⚙️ CONFIGURATION</a> • <a href="#features">🛰️ FEATURES</a>
+  <a href="#installation">📦 SETUP</a>
 </pre>
 
 <img src="./.github/asset/illustration/divider.svg" alt="divider" width="100%" />
 
-<img src="./.github/asset/illustration/starter_ts_cover.svg" width="100%" />
+<img src="./.github/asset/illustration/aesthetic_cursor_cover.svg" width="100%" />
 
 <br />
 
@@ -36,7 +36,7 @@
 <table border="0">
 <tr>
 <td>
-Zero-config TypeScript template for rapid development. Pre-configured with modern tooling to start coding
+A minimal, clean, and modern cursor theme designed to bring a touch of elegance and style to your Linux desktop. ✨🖱️
 </td>
 </tr>
 </table>
@@ -51,22 +51,11 @@ Zero-config TypeScript template for rapid development. Pre-configured with moder
 </h2>
 
 - [<img src="./.github/asset/icon/information.svg" width="20px" align="center" /> About](#about)
-- [<img src="./.github/asset/icon/satellite.svg" width="20px" align="center" /> Features](#features)
 - [<img src="./.github/asset/icon/thunder.svg" width="20px" align="center" /> Requirements](#requirements)
 - [<img src="./.github/asset/icon/package.svg" width="20px" align="center" /> Installation](#installation)
 - [<img src="./.github/asset/icon/rocket.svg" width="20px" align="center" /> Usage](#usage)
-- [<img src="./.github/asset/icon/gear.svg" width="20px" align="center" /> Configuration](#configuration)
 
 <br />
-
-<img src="./.github/asset/illustration/divider.svg" alt="divider" width="100%" />
-
-<h2 id="features">
-  <img src="./.github/asset/icon/satellite.svg" width="24px" align="center" />
-  Features
-</h2>
-
-[REPLACE with the features of your package]
 
 <img src="./.github/asset/illustration/divider.svg" alt="divider" width="100%" />
 
@@ -75,8 +64,7 @@ Zero-config TypeScript template for rapid development. Pre-configured with moder
   Requirements
 </h2>
 
-- <img src="./.github/asset/icon/node.svg" width="20px" align="center" /> node >= **22.17.0**
-- <img src="./.github/asset/icon/bun.svg" width="20px" align="center" /> bun >= **1.1.0**
+- <img src="./.github/asset/icon/arch.svg" width="20px" align="center" /> pacman >= **7.1.0**
 
 <br />
 
@@ -87,28 +75,10 @@ Zero-config TypeScript template for rapid development. Pre-configured with moder
   Installation
 </h2>
 
-<h3><img src="./.github/asset/icon/bun.svg" width="24px" align="center" /> Bun</h3>
+<h3><img src="./.github/asset/icon/arch.svg" width="24px" align="center" /> Pacman</h3>
 
 ```bash
-bun i -D [REPLACE_WITH_PACKAGE_NAME]
-```
-
-<h3><img src="./.github/asset/icon/npm.svg" width="24px" align="center" /> Npm</h3>
-
-```bash
-npm i -D [REPLACE_WITH_PACKAGE_NAME]
-```
-
-<h3><img src="./.github/asset/icon/pnpm.svg" width="24px" align="center" /> Pnpm</h3>
-
-```bash
-pnpm i -D [REPLACE_WITH_PACKAGE_NAME]
-```
-
-<h3><img src="./.github/asset/icon/yarn.svg" width="24px" align="center" /> Yarn</h3>
-
-```bash
-yarn i -D [REPLACE_WITH_PACKAGE_NAME]
+pacman -S aesthetic-cursor
 ```
 
 <br />
@@ -125,21 +95,6 @@ yarn i -D [REPLACE_WITH_PACKAGE_NAME]
 </h2>
 
 [REPLACE with usage instructions]
-
-<br />
-
-<img
-  src="./.github/asset/illustration/divider.svg"
-  alt="divider"
-  width="100%"
-/>
-
-<h2 id="configuration">
-  <img src="./.github/asset/icon/gear.svg" width="24px" align="center" />
-  Configuration
-</h2>
-
-[REPLACE with configuration instructions]
 
 <br />
 

@@ -1,5 +1,6 @@
 # Packages
 node_modules
+pkg-temp
 
 # Production
 dist
@@ -10,3 +11,4 @@ src/asset/png/*
 
 # Package
 aesthetic-cursor.tar.gz
+aesthetic-cursor-*.zst

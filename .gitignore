@@ -7,3 +7,6 @@ dist
 
 # Generation of asset
 src/asset/png/*
+
+# Package
+aesthetic-cursor.tar.gz

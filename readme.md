@@ -36,7 +36,7 @@
 <table border="0">
 <tr>
 <td>
-A minimal, clean, and modern cursor theme designed to bring a touch of elegance and style to your Linux desktop. ✨🖱️
+A minimal, clean, and modern cursor theme designed to bring a touch of elegance and style to your Linux desktop.
 </td>
 </tr>
 </table>
@@ -80,21 +80,6 @@ A minimal, clean, and modern cursor theme designed to bring a touch of elegance 
 ```bash
 pacman -S aesthetic-cursor
 ```
-
-<br />
-
-<img
-  src="./.github/asset/illustration/divider.svg"
-  alt="divider"
-  width="100%"
-/>
-
-<h2 id="usage">
-  <img src="./.github/asset/icon/rocket.svg" width="24px" align="center" />
-  Usage
-</h2>
-
-[REPLACE with usage instructions]
 
 <br />
 

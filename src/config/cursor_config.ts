@@ -4,8 +4,8 @@ const cursorConfig = [
     name: 'left-ptr',
     png: 'left-ptr.png',
     hotSpot: {
-      x: 9,
-      y: 5
+      x: 8,
+      y: 6
     },
     symlink: [
       'arrow',
@@ -18,8 +18,8 @@ const cursorConfig = [
     name: 'link',
     png: 'link.png',
     hotSpot: {
-      x: 9,
-      y: 5
+      x: 8,
+      y: 6
     },
     symlink: ['alias']
   },
@@ -27,16 +27,16 @@ const cursorConfig = [
     name: 'copy',
     png: 'copy.png',
     hotSpot: {
-      x: 9,
-      y: 5
+      x: 8,
+      y: 6
     }
   },
   {
     name: 'circle',
     png: 'circle.png',
     hotSpot: {
-      x: 9,
-      y: 5
+      x: 8,
+      y: 6
     },
     symlink: ['forbidden']
   },
@@ -44,16 +44,16 @@ const cursorConfig = [
     name: 'context-menu',
     png: 'context-menu.png',
     hotSpot: {
-      x: 9,
-      y: 5
+      x: 8,
+      y: 6
     }
   },
   {
     name: 'pointer-move',
     png: 'pointer-move.png',
     hotSpot: {
-      x: 9,
-      y: 5
+      x: 8,
+      y: 6
     }
   },
   {
@@ -69,8 +69,8 @@ const cursorConfig = [
     name: 'right-ptr',
     png: 'right-ptr.png',
     hotSpot: {
-      x: 23,
-      y: 5
+      x: 24,
+      y: 6
     },
     symlink: ['right_ptr']
   },
@@ -465,7 +465,7 @@ const cursorConfig = [
     png: 'progress.png',
     animation: true,
     hotSpot: {
-      x: 4,
+      x: 3,
       y: 8
     }
   }

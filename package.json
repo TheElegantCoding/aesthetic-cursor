@@ -12,7 +12,7 @@
   "scripts": {
     "postinstall": "gitlys init",
     "preinstall": "npx only-allow bun",
-    "build": "bun run lint && bun run type-check && bun ./src/index.ts",
+    "build": "bun run lint && bun run type-check && bun ./src/index.ts && bun run bundle:aur",
     "install": "cd ./pkg-temp && makepkg -si",
     "install:local": "cd ./pkg-temp && makepkg -f",
     "lint": "eslint . --fix --cache",
